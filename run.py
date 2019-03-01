@@ -30,6 +30,7 @@ def callback():
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    LineMessage = ''
     receivedmsg = event.message.text
     if '姓名' in receivedmsg and '學號' in receivedmsg and '手機' in receivedmsg:
         try:
