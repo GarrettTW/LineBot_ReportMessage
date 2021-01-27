@@ -41,3 +41,8 @@
   (**呼叫此步驟後會同時清除已記憶的回報資訊**)
   
   ![](https://imgur.com/TrXpmqg.jpg)
+  
+  遇到未知錯誤可以輸入`清空`來重置資料<br>
+  (**呼叫此步驟後會同時清除已記憶的回報資訊**)
+  
+  ![](https://i.imgur.com/xhfEyzB.png)
