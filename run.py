@@ -52,10 +52,13 @@ def handle_message(event):
                     raise Exception
                 # 得到學號
                 ID = receivedmsg.split("學號")[-1].split('手機')[0][1:]
-                if len(ID)==6:
-                    ID = int(ID[-4:])
-                elif len(ID)<=4:
-                    ID = int(ID)
+                # 直接完整save學號 -Garrett, 2021.01.28  
+                ID = int(ID)
+                # 學號不再限定只有5碼 -Garrett, 2021.01.28  
+                #if len(ID)==6:
+                #    ID = int(ID[-4:])
+                #elif len(ID)<=4:
+                #    ID = int(ID)
             except Exception:
                 LineMessage = '姓名、學號、手機、地點，其中一項未填。'    
             else:
@@ -64,7 +67,8 @@ def handle_message(event):
 
         elif '使用說明' in receivedmsg and len(receivedmsg)==4:
             LineMessage = (
-                '收到正確格式\n'
+                '收到以下正確格式\n'
+                '才會正確記錄回報。\n'
                 '----------\n'
                 '姓名：\n'
                 '學號：\n'
@@ -72,13 +76,20 @@ def handle_message(event):
                 '地點：\n'
                 '收假方式：\n'
                 '----------\n'
-                '才會正確記錄回報。\n'
-                '[格式]\n'
-                '正確格式範例。\n'
-                '[回報統計]\n'
-                '顯示完成回報的號碼。\n'
-                '[輸出回報]\n'
-                '貼出所有回報，並清空回報紀錄。'
+                '\n'
+                '指令\n' 
+                '----------\n'   
+                '•格式\n'
+                '->正確格式範例。\n'
+                '•回報統計\n'
+                '->顯示完成回報的號碼。\n'
+                '•輸出回報\n'
+                '->貼出所有回報，並清空回報紀錄。\n'
+                '•清空\n'
+                '->可手動清空Data，除錯用。\n'
+                '----------\n' 
+                '效果可參閱此說明\n'
+                'https://github.com/GarrettTW/linebot_reportmessage/blob/master/README.md'
             )
         elif '回報統計' in receivedmsg and len(receivedmsg)==4:
             try:
@@ -100,6 +111,11 @@ def handle_message(event):
 
         elif '格式' in receivedmsg and len(receivedmsg)==2:
             LineMessage = '姓名：\n學號：\n手機：\n地點：\n收假方式：'
+            
+        # for Error Debug, Empty all data -Sophia_Chen, 2021.01.25        
+        elif '清空' in receivedmsg and len(receivedmsg)==2:
+            reportData[groupID].clear()
+            LineMessage = '資料已重置!'
         
         if LineMessage :
             message = TextSendMessage(text=LineMessage)
