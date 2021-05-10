@@ -29,9 +29,15 @@
   
   ![](https://imgur.com/0uE4Ba8.jpg)
   
-  機器人收到正確格式後:
+  機器人可記錄的格式有兩種:
+  
+  **#1 使用預設格式:**
   
   ![](https://imgur.com/ZAXSMdL.jpg)
+  
+  **#2 使用自訂格式:**
+  
+  ![](https://i.imgur.com/iutYV03.png)
   
   你可以在聊天室任意過程中輸入`回報統計`，來查看目前有誰回報成功:
   
